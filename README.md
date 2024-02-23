@@ -1,6 +1,6 @@
 # dp-notifications
 
-**For now we have 4 types sypported**
+**For now we have 4 types supported**
 
 • Info (Blue)
 • Tip (Purple)
