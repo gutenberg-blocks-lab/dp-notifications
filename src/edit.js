@@ -1,38 +1,72 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
-import { __ } from '@wordpress/i18n';
+// Edit.js
 
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
+import { __ } from "@wordpress/i18n";
+import {
+  useBlockProps,
+  BlockControls,
+  InnerBlocks,
+} from "@wordpress/block-editor";
+import { ToolbarGroup, ToolbarButton } from "@wordpress/components";
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined';
+import WarningAmberOutlinedIcon from '@mui/icons-material/WarningAmberOutlined';
+import DangerousOutlinedIcon from '@mui/icons-material/DangerousOutlined';
+import { getMessageContent } from './getMessageContent.js';
+import "./editor.scss";
 
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-import './editor.scss';
+export default function Edit({ attributes, setAttributes }) {
+  const { messageType } = attributes;
 
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
- */
-export default function Edit() {
-	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Notifications – hello from the editor!', 'notifications' ) }
-		</p>
-	);
+  const updateMessageType = (type) => {
+    setAttributes({ messageType: type });
+  };
+
+
+  const messageContent = getMessageContent(messageType);
+  const blockProps = useBlockProps({
+    className: messageContent.className,
+  });
+
+
+  return (
+    <>
+      <BlockControls>
+        <ToolbarGroup>
+          <ToolbarButton
+            icon={() => <InfoOutlinedIcon />}
+            label={__("Info", "notifications")}
+            onClick={() => updateMessageType("info")}
+            isActive={messageType === "info"}
+          />
+          <ToolbarButton
+            icon={() => <TipsAndUpdatesOutlinedIcon />}
+            label={__("Tip", "notifications")}
+            onClick={() => updateMessageType("tip")}
+            isActive={messageType === "tip"}
+          />
+          <ToolbarButton
+            icon={() => <WarningAmberOutlinedIcon />}
+            label={__("Warning", "notifications")}
+            onClick={() => updateMessageType("warning")}
+            isActive={messageType === "warning"}
+          />
+          <ToolbarButton
+            icon={() => <DangerousOutlinedIcon />}
+            label={__("Deprecated", "notifications")}
+            onClick={() => updateMessageType("deprecated")}
+            isActive={messageType === "deprecated"}
+          />
+        </ToolbarGroup>
+      </BlockControls>
+      <div {...blockProps}>
+		<div className="info-title">
+			<messageContent.Icon />
+			<h4>
+				{messageContent.text}
+			</h4>
+		</div>
+        <InnerBlocks />
+      </div>
+    </>
+  );
 }

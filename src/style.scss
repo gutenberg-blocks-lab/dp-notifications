@@ -1,12 +1,40 @@
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-
 .wp-block-notifications-notifications {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+		background-color: #cdefff;
+		color: black;
+		padding: 1rem;
+
+		&.info{
+			background-color: #d6f2ff;
+		}
+
+		&.tip{
+			background-color: #ded8ff;
+		}
+
+		&.warning{
+			background-color: #ffefcd;
+		}
+
+		&.deprecated{
+			background-color: #ffd3d3;
+		}
+
+		.info-title{
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+
+			span{
+				display: flex;
+			}
+
+			svg{
+				width: 32px;
+				height: 32px;
+			}
+
+			h4{
+				margin: 0;
+			}
+		}
 }

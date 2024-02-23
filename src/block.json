@@ -1,6 +1,6 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3,
+	"apiVersion": 2,
 	"name": "notifications/notifications",
 	"version": "0.1.0",
 	"title": "Notifications",
@@ -9,11 +9,18 @@
 	"description": "Display notifications",
 	"example": {},
 	"supports": {
-		"html": false
+	  "html": false
 	},
 	"textdomain": "notifications",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
-	"viewScript": "file:./view.js"
-}
+	"viewScript": "file:./view.js",
+	"attributes": {
+	  "messageType": {
+		"type": "string",
+		"default": "info"
+	  }
+	}
+  }
+  
