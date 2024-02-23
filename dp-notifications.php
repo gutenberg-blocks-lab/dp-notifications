@@ -5,7 +5,7 @@
  * Description:       Notifications Block (Info, Tip, Warning, Error)
  * Requires at least: 6.1
  * Requires PHP:      7.0
- * Version:           1.0.8
+ * Version:           1.0.0
  * Author:            Marko Krstić
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -29,9 +29,9 @@ $plugin_prefix = 'DPNOTIFICATIONSBLOCK';
 define($plugin_prefix . '_DIR', plugin_basename(__DIR__));
 define($plugin_prefix . '_BASE', plugin_basename(__FILE__));
 define($plugin_prefix . '_PATH', plugin_dir_path(__FILE__));
-define($plugin_prefix . '_VER', '1.0.8');
-define($plugin_prefix . '_CACHE_KEY', 'dpyoutubeblock-cache-key-for-plugin');
-define($plugin_prefix . '_REMOTE_URL', 'https://selfhost.dplugins.com/wp-content/uploads/plugins/13/info.json');
+define($plugin_prefix . '_VER', '1.0.0');
+define($plugin_prefix . '_CACHE_KEY', 'dpnotificationsblock-cache-key-for-plugin');
+define($plugin_prefix . '_REMOTE_URL', 'https://selfhost.dplugins.com/wp-content/uploads/plugins/14/info.json');
 
 require constant($plugin_prefix . '_PATH') . 'inc/update.php';
 
