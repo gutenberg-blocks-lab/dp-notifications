@@ -1,0 +1,9 @@
+node_modules/
+src/
+screenshoots/
+
+.git
+.gitignore
+
+package-lock.json
+package.json
